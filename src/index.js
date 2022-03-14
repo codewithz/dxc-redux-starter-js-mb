@@ -1,22 +1,20 @@
 import { pipe } from 'lodash/fp';
 
 let input = "   JavaScript   ";
-let output = "<div>" + input.trim() + "</div>";
+
 
 
 const trim = str => str.trim();
 const lowerCase = str => str.toLowerCase();
 const wrapInDiv = str => `<div>${str}</div>`
-//trim
-//toLowerCase
-//wrapInDiv
+const wrapInSpan = str => `<span>${str}</span>`
 
-const result = wrapInDiv(trim(lowerCase(input)));
+const wrap = (type, str) => `<${type}>${str}</${type}>`
 
-console.log(result)
+
 
 //pipe() create a pipeline from left to right 
-const transform = pipe(trim, lowerCase, wrapInDiv)
+const transform = pipe(trim, lowerCase, wrap("div"))
 
-const newResult = transform(input);
-console.log("New Result:", newResult);
+const result = transform(input);
+console.log("New Result:", result);
