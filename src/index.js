@@ -1,5 +1,12 @@
 import store from './store';
 
+const unsubscribe = store.subscribe(
+    () => {
+        console.log('Store State Changed:', store.getState())
+
+    }
+)
+
 
 store.dispatch({
     type: 'ADD_BUG',
@@ -7,7 +14,10 @@ store.dispatch({
         description: 'Bug 1'
     }
 })
+
 console.log(store.getState())
+
+unsubscribe()
 
 store.dispatch({
     type: 'REMOVE_BUG',
