@@ -1,6 +1,6 @@
 
 let lastId = 5;
-function reducer(state, action) {
+function reducer(state = [], action) {
     switch (action.type) {
         case "ADD_BUG":
             return [...state,
